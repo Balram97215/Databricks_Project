@@ -1,2 +1,2 @@
 # Databricks_Project
-Insurance domain | end-to-end pipeline | data generator model | analytics
+Insurance domain | data generator model | end-to-end pipeline | analytics
