@@ -1,0 +1,29 @@
+# The main pipeline for ins_sdp
+
+resources:
+  pipelines:
+    ins_sdp_etl:
+      name: ins_sdp_etl
+      catalog: ${var.catalog}
+      # Default schema (used for unqualified names); each dataset is fully qualified per layer.
+      schema: ${var.bronze_schema}
+      serverless: true
+      root_path: "../src/ins_sdp_etl"
+
+      # Parameters surfaced to transformation files via spark.conf.get(...)
+      configuration:
+        catalog: ${var.catalog}
+        bronze_schema: ${var.bronze_schema}
+        silver_schema: ${var.silver_schema}
+        gold_schema: ${var.gold_schema}
+        volume_base: ${var.volume_base}
+
+      libraries:
+        - glob:
+            include: ../src/ins_sdp_etl/transformations/**
+
+      environment:
+        dependencies:
+          # We include every dependency defined by pyproject.toml by defining an editable environment
+          # that points to the folder where pyproject.toml is deployed.
+          - --editable ${workspace.file_path}
