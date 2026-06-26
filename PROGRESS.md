@@ -3,22 +3,19 @@
 Living status + decision log. **This file is the resume point**: read it (with `Project Plan.md`)
 to know where the project stands and why decisions were made. Update it at the end of each story.
 
-_Last updated: 2026-06-26 (S2.2 code complete, blocked on billing)._
+_Last updated: 2026-06-26 (end of S2.2)._
 
 > **Local path moved:** project now lives at `~/Doc/VSCode/db-ai-dev-kit/ins_sdp`
 > (was `~/Desktop/...`; macOS blocked Desktop access). Git remote / pipeline / tables unaffected.
 
-> **⛔ BLOCKER (2026-06-26):** Databricks account is **out of compute credits**
-> ("Failed to create a cluster because you've exhausted your available credits").
-> S2.2 code is written, validated, and deployed but **cannot be run/verified** until a
-> payment method is added / credits refreshed in the Databricks console.
+> _Resolved 2026-06-26: account was briefly out of compute credits; fixed by linking a payment method._
 
 ---
 
 ## Current position
 - **Sprint:** S2 — *Harden quality; complete all entities in LOB 1 (Commercial Lines)* → milestone **M3**.
-- **Last completed story:** **S2.1** — data-quality hardening (drop structural / quarantine business). Merged to `main`.
-- **In progress:** **S2.2** — metadata-driven factory (`commercial_lines.py`): code done on branch `s2.2-factory`, deploy OK, **run/verify blocked on account credits**. Not merged.
+- **Last completed story:** **S2.2** — metadata-driven factory (`commercial_lines.py`). Verified to reproduce S2.1 byte-for-byte (dim 500/0/500; fact silver 19,534 / quarantine 466 / current 9,767 / history 9,767). Merged to `main`.
+- **Next story:** **S2.3** — all 14 Commercial Lines dimensions (BATCH) via config rows in the factory.
 - **WIP limit:** 1 story at a time.
 
 ## Roadmap status
