@@ -174,6 +174,109 @@ ENTITIES = [
         ],
     },
     {
+        "entity": "dim_aviation_risk", "pattern": "BATCH", "key": "aviation_risk_key",
+        "business_rules": {
+            "tail_number_not_null": "tail_number IS NOT NULL",
+            "operator_name_not_null": "operator_name IS NOT NULL",
+        },
+        "gold_select": ["aviation_risk_key", "tail_number", "aircraft_type", "aircraft_make", "aircraft_model", "year_of_manufacture", "hull_value_usd", "seating_capacity", "operator_name", "operator_class", "total_pilot_hours", "base_airport_iata", "geographic_territory", "airworthiness_cert_date"],
+    },
+    {
+        "entity": "dim_cause_of_loss", "pattern": "BATCH", "key": "cause_key",
+        "business_rules": {
+            "cause_code_not_null": "cause_code IS NOT NULL",
+            "cause_name_not_null": "cause_name IS NOT NULL",
+        },
+        "gold_select": ["cause_key", "cause_code", "cause_name", "cause_category", "lob_applicability", "severity_class"],
+    },
+    {
+        "entity": "dim_coverage_type", "pattern": "BATCH", "key": "coverage_type_key",
+        "business_rules": {
+            "coverage_code_not_null": "coverage_code IS NOT NULL",
+            "coverage_name_not_null": "coverage_name IS NOT NULL",
+        },
+        "gold_select": ["coverage_type_key", "coverage_code", "coverage_name", "coverage_category", "lob_applicability"],
+    },
+    {
+        "entity": "dim_customer_cl", "pattern": "BATCH", "key": "customer_key",
+        "business_rules": {
+            "customer_id_not_null": "customer_id IS NOT NULL",
+            "company_name_not_null": "company_name IS NOT NULL",
+            "geography_key_not_null": "geography_key IS NOT NULL",
+        },
+        "gold_select": ["customer_key", "customer_id", "company_name", "industry_sector", "annual_revenue_usd", "employee_count", "ein", "duns_number", "headquarters_state", "headquarters_country", "years_in_business", "credit_rating", "customer_segment", "geography_key", "is_active"],
+    },
+    {
+        "entity": "dim_cyber_risk", "pattern": "BATCH", "key": "cyber_risk_key",
+        "business_rules": {
+            "insured_company_name_not_null": "insured_company_name IS NOT NULL",
+        },
+        "gold_select": ["cyber_risk_key", "insured_company_name", "industry_sector", "annual_revenue_usd", "employee_count", "it_security_score", "mfa_implemented", "endpoint_detection", "security_framework", "prior_breach_history", "data_records_protected", "primary_cloud_provider", "cyber_maturity_rating", "patch_cadence"],
+    },
+    {
+        "entity": "dim_energy_risk", "pattern": "BATCH", "key": "energy_risk_key",
+        "business_rules": {
+            "asset_name_not_null": "asset_name IS NOT NULL",
+            "asset_type_not_null": "asset_type IS NOT NULL",
+        },
+        "gold_select": ["energy_risk_key", "asset_name", "asset_type", "energy_sector", "jurisdiction", "operator_name", "total_insured_value_usd", "production_capacity_mw", "year_commissioned", "environmental_risk_score", "offshore"],
+    },
+    {
+        "entity": "dim_excess_casualty_risk", "pattern": "BATCH", "key": "excess_casualty_risk_key",
+        "business_rules": {
+            "risk_name_not_null": "risk_name IS NOT NULL",
+        },
+        "gold_select": ["excess_casualty_risk_key", "risk_name", "industry_sector", "attachment_point_usd", "limit_usd", "excess_layer_number", "primary_carrier", "primary_policy_limit_usd", "total_insured_value_usd", "risk_profile", "underlying_insurer"],
+    },
+    {
+        "entity": "dim_marine_risk", "pattern": "BATCH", "key": "marine_risk_key",
+        "business_rules": {
+            "imo_number_not_null": "imo_number IS NOT NULL",
+            "vessel_name_not_null": "vessel_name IS NOT NULL",
+        },
+        "gold_select": ["marine_risk_key", "imo_number", "vessel_name", "vessel_type", "flag_state", "year_built", "gross_tonnage_gt", "hull_value_usd", "cargo_type", "trade_route", "classification_society", "average_voyage_duration_days", "port_of_registry"],
+    },
+    {
+        "entity": "dim_peril", "pattern": "BATCH", "key": "peril_key",
+        "business_rules": {
+            "peril_code_not_null": "peril_code IS NOT NULL",
+            "peril_name_not_null": "peril_name IS NOT NULL",
+        },
+        "gold_select": ["peril_key", "peril_code", "peril_name", "peril_category", "is_named_peril", "is_cat_peril", "lob_applicability"],
+    },
+    {
+        "entity": "dim_product_cl", "pattern": "BATCH", "key": "product_key",
+        "business_rules": {
+            "product_code_not_null": "product_code IS NOT NULL",
+            "product_name_not_null": "product_name IS NOT NULL",
+        },
+        "gold_select": ["product_key", "product_code", "product_name", "lob", "coverage_trigger", "admitted_status", "min_premium_usd", "max_premium_usd"],
+    },
+    {
+        "entity": "dim_reinsurance_treaty", "pattern": "BATCH", "key": "treaty_key",
+        "business_rules": {
+            "treaty_id_not_null": "treaty_id IS NOT NULL",
+            "treaty_name_not_null": "treaty_name IS NOT NULL",
+        },
+        "gold_select": ["treaty_key", "treaty_id", "treaty_name", "treaty_type", "effective_year", "retention_pct", "attachment_usd", "limit_usd", "lob_scope", "cedant_commission_pct"],
+    },
+    {
+        "entity": "dim_reinsurer", "pattern": "BATCH", "key": "reinsurer_key",
+        "business_rules": {
+            "reinsurer_code_not_null": "reinsurer_code IS NOT NULL",
+            "reinsurer_name_not_null": "reinsurer_name IS NOT NULL",
+        },
+        "gold_select": ["reinsurer_key", "reinsurer_code", "reinsurer_name", "domicile_country", "am_best_rating"],
+    },
+    {
+        "entity": "dim_underwriter", "pattern": "BATCH", "key": "underwriter_key",
+        "business_rules": {
+            "underwriter_id_not_null": "underwriter_id IS NOT NULL",
+            "last_name_not_null": "last_name IS NOT NULL",
+        },
+        "gold_select": ["underwriter_key", "underwriter_id", "first_name", "last_name", "title", "lob_specialty", "years_experience", "authority_limit_usd", "office_location", "is_active"],
+    },
+    {
         "entity": "fact_policy_cl", "pattern": "CDC", "key": "policy_key",
         "casts": {"effective_date": "date", "expiry_date": "date"},
         "business_rules": {
