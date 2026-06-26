@@ -3,7 +3,7 @@
 Living status + decision log. **This file is the resume point**: read it (with `Project Plan.md`)
 to know where the project stands and why decisions were made. Update it at the end of each story.
 
-_Last updated: 2026-06-26 (end of S2.2)._
+_Last updated: 2026-06-26 (end of S2.3)._
 
 > **Local path moved:** project now lives at `~/Doc/VSCode/db-ai-dev-kit/ins_sdp`
 > (was `~/Desktop/...`; macOS blocked Desktop access). Git remote / pipeline / tables unaffected.
@@ -14,8 +14,8 @@ _Last updated: 2026-06-26 (end of S2.2)._
 
 ## Current position
 - **Sprint:** S2 — *Harden quality; complete all entities in LOB 1 (Commercial Lines)* → milestone **M3**.
-- **Last completed story:** **S2.2** — metadata-driven factory (`commercial_lines.py`). Verified to reproduce S2.1 byte-for-byte (dim 500/0/500; fact silver 19,534 / quarantine 466 / current 9,767 / history 9,767). Merged to `main`.
-- **Next story:** **S2.3** — all 14 Commercial Lines dimensions (BATCH) via config rows in the factory.
+- **Last completed story:** **S2.3** — all **14 Commercial Lines dimensions** (BATCH) added as config rows in the factory. Verified: every dim silver = gold = distinct keys, quarantine 0 (clean), DQ rules grounded in profiled null-checks. Merged to `main`.
+- **Next story:** **S2.4** — the 6 Commercial Lines facts (CDC) via config rows (`fact_policy_cl` done; 5 to add: earned_premium, endorsement, exposure, reinsurance_cession, written_premium).
 - **WIP limit:** 1 story at a time.
 
 ## Roadmap status
